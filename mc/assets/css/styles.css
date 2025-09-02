@@ -11,7 +11,7 @@ body {
     height: 100vh;
     color: white;
     text-align: center;
-    background: url("https://mc.cuakercraft.com.ar/assets/media/images/fondo-webp") no-repeat center center fixed;
+    background: url("https://mc.cuakercraft.com.ar/assets/media/images/fondo.webp") no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
