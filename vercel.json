@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+        {
+            "source": "/:page",
+            "destination": "/:page.html"
+        }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+}
