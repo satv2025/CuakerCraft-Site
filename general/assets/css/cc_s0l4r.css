@@ -1,10 +1,14 @@
+/* Import de fuentes */
 @import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
-
 @import url('https://fonts.cdnfonts.com/css/minecraftia');
 
+* {
+    font-family: 'Gilroy';
+}
+
+/* Body y global */
 body {
     margin: 0;
-    font-family: 'Gilroy';
     background: #000;
     /* Dark mode */
     color: #fff;
@@ -20,17 +24,60 @@ body {
 }
 
 .navbar a {
+    font-family: 'Gilroy', sans-serif;
+    /* fuente general */
     color: #00ff88;
-    /* Verde */
+    /* verde */
     text-decoration: none;
-    border: 2px solid #A0A0A0;
-    padding: 0.3rem 0.8rem;
+    outline: 2px solid #A0A0A0;
+    padding: 0.65rem 0.8rem;
+    /* altura uniforme */
     transition: 0.2s;
 }
 
 .navbar a:hover {
+    outline: 2px solid #fff;
     background: #00ff88;
     color: #000;
+}
+
+/* Botón Jugar Ahora */
+#btn-jugarahora {
+    font-family: 'Minecraftia', monospace;
+    /* solo Jugar Ahora */
+    background: #000;
+    outline: 2px solid #A0A0A0;
+    color: #fff;
+    /* mismo padding que otros botones */
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 0.55em !important;
+    padding-top: 0.4em;
+}
+
+#btn-jugarahora:hover {
+    outline: 2px solid #fff;
+}
+
+/* Botones generales (sin Minecraftia) */
+.btn,
+.btn-default {
+    font-family: 'Gilroy', sans-serif;
+    /* fuente general */
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    /* altura uniforme */
+    text-decoration: none;
+    outline: 2px solid #A0A0A0;
+    background: #000;
+    color: #fff;
+    transition: 0.2s;
+}
+
+/* Hover general de botones, excluyendo Jugar Ahora */
+.btn:not(#btn-jugarahora):hover,
+.btn-default:not(#btn-jugarahora):hover {
+    outline: 2px solid #fff;
 }
 
 /* Hero */
@@ -43,33 +90,16 @@ body {
     flex-direction: column;
     gap: 1rem;
     background: #111 url('assets/images/hero-bg.jpg') center/cover no-repeat;
-    /* opcional fondo dark */
 }
 
 .hero h1 {
     font-size: 3rem;
     color: #00ff88;
-    /* Verde */
 }
 
 .hero p {
     font-size: 1.2rem;
     color: #ccc;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background: #000;
-    border: 3px solid #A0A0A0;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.2s;
-    font-family: 'Minecraftia';
-}
-
-.btn:hover {
-    border: 3px solid #fff;
 }
 
 /* Secciones */
@@ -82,9 +112,9 @@ section {
 h2,
 h3 {
     color: #00ff88;
-    /* Verde para títulos */
 }
 
+/* Cards */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -101,7 +131,6 @@ h3 {
 
 .card strong {
     color: #00ff88;
-    /* Verde dentro de las cards */
 }
 
 /* Footer */
