@@ -58,7 +58,7 @@ form.addEventListener("submit", async (e) => {
         });
 
         alert(`¡Registro exitoso! Bienvenido ${fullName}`);
-        window.location.href = "index.html";
+        window.location.href = "index";
     } catch (err) {
         alert("Error: " + err.message);
     }

@@ -44,7 +44,7 @@ form.addEventListener("submit", async (e) => {
         await signInWithEmailAndPassword(auth, email, password);
 
         alert(`¡Bienvenido ${userData.fullName}!`);
-        window.location.href = "index.html"; // Redirigir al inicio
+        window.location.href = "index"; // Redirigir al inicio
     } catch (err) {
         alert("Error: " + err.message);
     }
