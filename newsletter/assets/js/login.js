@@ -2,7 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyA7X_UAMFyvcLuQ_Cuwuhk0M3m6knluXsY",
     authDomain: "cuakercraft.firebaseapp.com",
@@ -18,34 +17,31 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const form = document.getElementById("login-form");
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+        try {
+            const usersRef = collection(db, "users");
+            const q = query(usersRef, where("username", "==", username));
+            const querySnapshot = await getDocs(q);
 
-    try {
-        // Buscar email asociado al username en Firestore
-        const usersRef = collection(db, "users");
-        const q = query(usersRef, where("username", "==", username));
-        const querySnapshot = await getDocs(q);
+            if (querySnapshot.empty) {
+                alert("Usuario no encontrado");
+                return;
+            }
 
-        if (querySnapshot.empty) {
-            alert("Usuario no encontrado");
-            return;
+            const userData = querySnapshot.docs[0].data();
+            const email = userData.email;
+
+            await signInWithEmailAndPassword(auth, email, password);
+            alert(`¡Bienvenido ${userData.fullName}!`);
+            window.location.href = "/"; // redirección limpia
+        } catch (err) {
+            alert("Error: " + err.message);
         }
-
-        // Tomamos el primer usuario que coincida
-        const userData = querySnapshot.docs[0].data();
-        const email = userData.email;
-
-        // Login con email + contraseña
-        await signInWithEmailAndPassword(auth, email, password);
-
-        alert(`¡Bienvenido ${userData.fullName}!`);
-        window.location.href = "index"; // Redirigir al inicio
-    } catch (err) {
-        alert("Error: " + err.message);
-    }
-});
+    });
+}

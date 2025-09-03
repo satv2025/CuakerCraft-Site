@@ -2,7 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyA7X_UAMFyvcLuQ_Cuwuhk0M3m6knluXsY",
     authDomain: "cuakercraft.firebaseapp.com",
@@ -18,48 +17,44 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const form = document.getElementById("register-form");
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+        const fullName = document.getElementById("fullName").value;
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-    const fullName = document.getElementById("fullName").value;
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
 
-    // Validar contraseñas
-    if (password !== confirmPassword) {
-        alert("Las contraseñas no coinciden");
-        return;
-    }
+        const captchaResponse = grecaptcha.getResponse();
+        if (!captchaResponse) {
+            alert("Por favor verifica el captcha");
+            return;
+        }
 
-    // Validar reCAPTCHA
-    const captchaResponse = grecaptcha.getResponse();
-    if (!captchaResponse) {
-        alert("Por favor verifica el captcha");
-        return;
-    }
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-    try {
-        // Crear usuario en Firebase Auth
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+            await updateProfile(user, { displayName: fullName });
 
-        // Guardar displayName
-        await updateProfile(user, { displayName: fullName });
+            await setDoc(doc(db, "users", user.uid), {
+                fullName,
+                username,
+                email,
+                createdAt: new Date()
+            });
 
-        // Guardar datos extra en Firestore
-        await setDoc(doc(db, "users", user.uid), {
-            fullName,
-            username,
-            email,
-            createdAt: new Date()
-        });
-
-        alert(`¡Registro exitoso! Bienvenido ${fullName}`);
-        window.location.href = "index";
-    } catch (err) {
-        alert("Error: " + err.message);
-    }
-});
+            alert(`¡Registro exitoso! Bienvenido ${fullName}`);
+            window.location.href = "/"; // redirección limpia
+        } catch (err) {
+            alert("Error: " + err.message);
+        }
+    });
+}
