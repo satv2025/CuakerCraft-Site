@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - CuakerCraft Newsletter</title>
+    <link rel="stylesheet" href="assets/css/s1gnl0g.css">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html">Inicio</a>
+        <a href="login.html">Ingresar</a>
+        <a href="register.html">Registrarse</a>
+    </nav>
+
+    <section class="form-section">
+        <h2>Registrarse</h2>
+        <form id="register-form">
+            <label for="fullName">Nombre completo</label>
+            <input type="text" id="fullName" required>
+
+            <label for="username">Nombre de usuario (el mismo que usás en Minecraft)</label>
+            <input type="text" id="username" required>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" required>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" required>
+
+            <label for="confirmPassword">Confirmar contraseña</label>
+            <input type="password" id="confirmPassword" required>
+
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LdJOb0rAAAAAFzlYknrfRzbKqF_1xJLLZQX6QVF"></div>
+
+            <button type="submit" class="btn">Crear cuenta</button>
+        </form>
+    </section>
+
+    <script type="module" src="assets/js/register.js"></script>
+</body>
+
+</html>
