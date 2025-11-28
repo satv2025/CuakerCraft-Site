@@ -11,51 +11,25 @@
 
 <body>
     <nav class="navbar">
-        <a href="/login">Iniciar Sesión</a>
-        <a href="/register">Registrarse</a>
+        <a href="/login.html">Iniciar Sesión</a>
+        <a href="/register.html">Registrarse</a>
+        <a href="/panel.html">Panel</a>
     </nav>
 
     <header class="hero">
         <h1>Suscribite al Newsletter</h1>
         <p>Recibí todas las novedades y actualizaciones de CuakerCraft directamente en tu correo.</p>
-        <a href="/register" class="btn">Suscribirme</a>
+        <a href="/register.html" class="btn">Suscribirme</a>
     </header>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyA7X_UAMFyvcLuQ_Cuwuhk0M3m6knluXsY",
-            authDomain: "cuakercraft.firebaseapp.com",
-            projectId: "cuakercraft",
-            storageBucket: "cuakercraft.firebasestorage.app",
-            messagingSenderId: "49863836870",
-            appId: "1:49863836870:web:159b1037169a1cc74c43c7",
-            measurementId: "G-8KHXRX74K6"
-        };
+    <main class="content">
+        <section id="posts-container" class="posts-container" style="display:none;">
+            <h2>Últimas novedades</h2>
+            <div id="posts"></div>
+        </section>
+    </main>
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        onAuthStateChanged(auth, (user) => {
-            const hero = document.querySelector(".hero");
-            if (user) {
-                hero.innerHTML = `
-          <h1>Bienvenido ${user.displayName}</h1>
-          <p>Estas son las últimas novedades de CuakerCraft:</p>
-          <div id="posts">
-            <p>🟢 Entrada 1: ¡Servidor en mantenimiento!</p>
-            <p>🟢 Entrada 2: Próxima apertura del PvP justo</p>
-          </div>
-          <a href="#" id="btn-logout" class="btn">Cerrar sesión</a>
-        `;
-                document.getElementById("btn-logout").addEventListener("click", async () => {
-                    await auth.signOut();
-                    window.location.reload();
-                });
-            }
-        });
-    </script>
+    <script type="module" src="assets/js/index.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 @import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
 
 * {
-    font-family: 'Gilroy';
+    box-sizing: border-box;
+    font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
     border: 2px solid #A0A0A0;
     padding: 0.3rem 0.8rem;
     transition: 0.2s;
+    font-size: 0.95rem;
 }
 
 .navbar a:hover {
@@ -89,20 +91,4 @@ input:focus {
 .btn:hover {
     background: #2c631c;
     border: 1px solid #00ff88;
-}
-
-/* Botón Firebase provider */
-.btn-provider {
-    background: #1877f2;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    padding: 0.8rem;
-    cursor: pointer;
-    text-align: center;
-    transition: 0.2s;
-}
-
-.btn-provider:hover {
-    filter: brightness(0.9);
 }

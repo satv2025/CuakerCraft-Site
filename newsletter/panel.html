@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Publicación - CuakerCraft Newsletter</title>
+    <link rel="stylesheet" href="assets/css/newsletter.css">
+    <link rel="icon" type="image/png" href="https://media.cuakercraft.com.ar/assets/media/images/cuakerlogo2024.png">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/index.html">Inicio</a>
+        <a href="#" id="logout-link">Cerrar sesión</a>
+    </nav>
+
+    <main class="content">
+        <section id="no-permission" class="panel-denied" style="display:none;">
+            <h2>⛔ No tenés permisos para entrar al panel.</h2>
+            <p>Solo usuarios con rol <strong>publisher</strong> o <strong>admin</strong> pueden publicar noticias.</p>
+        </section>
+
+        <section id="panel-section" class="panel-section" style="display:none;">
+            <h2>Panel de Publicación</h2>
+            <form id="post-form">
+                <label for="title">Título</label>
+                <input type="text" id="title" required>
+
+                <label for="content">Contenido</label>
+                <textarea id="content" rows="8" required></textarea>
+
+                <button type="submit" class="btn">Publicar</button>
+            </form>
+
+            <hr>
+
+            <h3>Últimas publicaciones</h3>
+            <div id="panel-posts"></div>
+        </section>
+    </main>
+
+    <script type="module" src="assets/js/panel.js"></script>
+</body>
+
+</html>

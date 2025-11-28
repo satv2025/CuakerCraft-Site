@@ -1,7 +1,8 @@
 @import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
 
 * {
-    font-family: 'Gilroy';
+    box-sizing: border-box;
+    font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
     border: 2px solid #A0A0A0;
     padding: 0.3rem 0.8rem;
     transition: 0.2s;
+    font-size: 0.95rem;
 }
 
 .navbar a:hover {
@@ -34,14 +36,14 @@ body {
 
 /* Hero */
 .hero {
-    height: 100vh;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
     gap: 1rem;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
 }
 
 .hero h1 {
@@ -57,6 +59,7 @@ body {
     color: #ccc;
 }
 
+/* Botón */
 .btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
@@ -67,9 +70,79 @@ body {
     text-decoration: none;
     transition: 0.2s;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .btn:hover {
     background: #2c631c;
     border-color: #00ff88;
+}
+
+/* Contenido general */
+.content {
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    padding: 0 1rem;
+}
+
+/* Posts */
+.posts-container h2 {
+    color: #00ff88;
+    margin-bottom: 1rem;
+}
+
+.post {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.post p {
+    margin: 0.2rem 0;
+    color: #ddd;
+}
+
+.post small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+}
+
+/* Panel */
+.panel-section {
+    background: #111;
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.panel-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.panel-section input,
+.panel-section textarea {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #000;
+    color: #fff;
+}
+
+.panel-denied {
+    margin-top: 3rem;
+    text-align: center;
+    background: #200;
+    border: 1px solid #a00;
+    border-radius: 8px;
+    padding: 1rem;
 }
