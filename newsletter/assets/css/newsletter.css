@@ -1,8 +1,10 @@
-@import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
+/* Import de fuentes */
+@import url('https://solargentinotv.com.ar/assets/fonts/Gilroy/Gilroy.css');
+@import url('https://fonts.cdnfonts.com/css/minecraftia');
 
 * {
     box-sizing: border-box;
-    font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Gilroy';
 }
 
 body {
