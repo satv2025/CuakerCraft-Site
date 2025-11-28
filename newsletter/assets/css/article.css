@@ -1,0 +1,90 @@
+@import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
+
+* {
+    font-family: 'Gilroy';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #e6e6e6;
+    line-height: 1.7;
+    padding: 0 1rem;
+}
+
+/* CONTENEDOR */
+.article-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+/* TÍTULO */
+.article-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* META */
+.article-meta {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* CONTENIDO — JUSTIFICADO */
+.article-content {
+    font-size: 1.15rem;
+    color: #ddd;
+    text-align: justify;
+    /* ← JUSTIFICA TODO EL TEXTO */
+}
+
+.article-content p {
+    margin-bottom: 1.3rem;
+    text-align: justify;
+    /* ← Por si hay estilos inline */
+}
+
+/* BOTÓN VOLVER */
+.back-btn {
+    display: block;
+    width: max-content;
+    margin: 2rem auto;
+    padding: 0.8rem 1.4rem;
+    background: #222;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .article-title {
+        font-size: 2rem;
+    }
+
+    .article-container {
+        padding: 1.3rem;
+    }
+
+    .article-content {
+        font-size: 1.05rem;
+    }
+}

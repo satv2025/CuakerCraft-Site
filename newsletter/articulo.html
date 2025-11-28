@@ -5,21 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artículo - CuakerCraft</title>
-    <link rel="stylesheet" href="https://newsletter.cuakercraft.com.ar/assets/css/newsletter.css">
+
+    <!-- CSS base -->
+    <link id="dynamic-article-css" rel="stylesheet" href="">
 </head>
 
 <body>
+
     <nav class="navbar">
         <a href="/">Inicio</a>
     </nav>
 
     <main class="content">
         <section id="article" class="article-container">
-            <h2>Cargando artículo...</h2>
+            <h1 class="article-title">Cargando artículo...</h1>
+            <p class="article-meta"></p>
+            <div class="article-content">
+                <p>Obteniendo información…</p>
+            </div>
         </section>
+
+        <a href="/" class="back-btn">← Volver</a>
     </main>
 
-    <script type="module" src="https://newsletter.cuakercraft.com.ar/assets/js/article.js"></script>
+    <script type="module" src="/assets/js/article.js"></script>
+
 </body>
 
 </html>
