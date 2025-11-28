@@ -9,12 +9,12 @@ async function loadUserAndPosts() {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (user) {
-        // Usuario logueado: mensaje personalizado + botón logout
+        // Usuario logueado
         hero.innerHTML = `
-      <h1>Bienvenido, ${user.user_metadata?.full_name || user.email}</h1>
-      <p>Estas son las últimas novedades de CuakerCraft directamente desde el newsletter.</p>
-      <button class="btn" id="btn-logout">Cerrar sesión</button>
-    `;
+            <h1>Bienvenido, ${user.user_metadata?.full_name || user.email}</h1>
+            <p>Estas son las últimas novedades del Newsletter de CuakerCraft.</p>
+            <button class="btn" id="btn-logout">Cerrar sesión</button>
+        `;
 
         const btnLogout = document.getElementById("btn-logout");
         btnLogout.addEventListener("click", async () => {
@@ -22,11 +22,10 @@ async function loadUserAndPosts() {
             window.location.reload();
         });
 
-        // Mostrar posts
         postsSection.style.display = "block";
         await loadPosts();
     } else {
-        // Usuario no logueado: hero por defecto y ocultar posts
+        // Usuario NO logueado
         postsSection.style.display = "none";
     }
 }
@@ -34,7 +33,7 @@ async function loadUserAndPosts() {
 async function loadPosts() {
     const { data, error } = await supabase
         .from("panel_posts")
-        .select("*")
+        .select("title, content, created_at, short_id")
         .order("created_at", { ascending: false });
 
     if (error) {
@@ -51,13 +50,23 @@ async function loadPosts() {
     postsDiv.innerHTML = "";
 
     data.forEach(post => {
+        const preview = post.content.length > 200
+            ? post.content.substring(0, 200) + "..."
+            : post.content;
+
         const div = document.createElement("div");
         div.className = "post";
+
         div.innerHTML = `
-      <h3>${post.title}</h3>
-      <p>${post.content}</p>
-      <small>Publicado el ${new Date(post.created_at).toLocaleString()}</small>
-    `;
+            <h3>${post.title}</h3>
+            <p>${preview}</p>
+            <a href="/newsletter/articulo.html?id=${post.short_id}" class="btn" style="margin-top:10px;">
+                Ver más
+            </a>
+            <br>
+            <small>Publicado el ${new Date(post.created_at).toLocaleString()}</small>
+        `;
+
         postsDiv.appendChild(div);
     });
 }
