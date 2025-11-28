@@ -14,7 +14,7 @@ async function initPanel() {
         noPermissionSection.style.display = "block";
         noPermissionSection.innerHTML = `
       <h2>⛔ Debés iniciar sesión para acceder al panel.</h2>
-      <p><a href="/login.html" style="color:#00ff88;">Ir a Iniciar Sesión</a></p>
+      <p><a href="/login" style="color:#00ff88;">Ir a Iniciar Sesión</a></p>
     `;
         return;
     }
@@ -97,7 +97,7 @@ if (logoutLink) {
     logoutLink.addEventListener("click", async (e) => {
         e.preventDefault();
         await logout();
-        window.location.href = "/index.html";
+        window.location.href = "/";
     });
 }
 

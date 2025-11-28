@@ -71,7 +71,7 @@ export async function getRole() {
 ============================================================ */
 
 /* ---------- REGISTRO AUTOMÁTICO ---------- */
-export function registerFormHandler(formId, redirect = "/login.html") {
+export function registerFormHandler(formId, redirect = "/login") {
     const form = document.getElementById(formId);
     if (!form) return;
 
@@ -94,7 +94,7 @@ export function registerFormHandler(formId, redirect = "/login.html") {
 }
 
 /* ---------- LOGIN AUTOMÁTICO ---------- */
-export function loginFormHandler(formId, redirect = "/index.html") {
+export function loginFormHandler(formId, redirect = "/") {
     const form = document.getElementById(formId);
     if (!form) return;
 
