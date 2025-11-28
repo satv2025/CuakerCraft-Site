@@ -7,15 +7,19 @@ const postForm = document.getElementById("post-form");
 const panelPostsDiv = document.getElementById("panel-posts");
 const logoutLink = document.getElementById("logout-link");
 
+let currentUser = null;
+
 async function initPanel() {
     const { data: { user } } = await supabase.auth.getUser();
+
+    currentUser = user; // ← Guardamos el usuario globalmente
 
     if (!user) {
         noPermissionSection.style.display = "block";
         noPermissionSection.innerHTML = `
-      <h2>⛔ Debés iniciar sesión para acceder al panel.</h2>
-      <p><a href="/login" style="color:#00ff88;">Ir a Iniciar Sesión</a></p>
-    `;
+            <h2>⛔ Debés iniciar sesión para acceder al panel.</h2>
+            <p><a href="/login" style="color:#00ff88;">Ir a Iniciar Sesión</a></p>
+        `;
         return;
     }
 
@@ -53,10 +57,10 @@ async function loadPanelPosts() {
         const div = document.createElement("div");
         div.className = "post";
         div.innerHTML = `
-      <h3>${post.title}</h3>
-      <p>${post.content}</p>
-      <small>${new Date(post.created_at).toLocaleString()}</small>
-    `;
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <small>${new Date(post.created_at).toLocaleString()}</small>
+        `;
         panelPostsDiv.appendChild(div);
     });
 }
@@ -76,9 +80,18 @@ if (postForm) {
             return;
         }
 
+        if (!currentUser) {
+            alert("Error: No se pudo obtener el usuario actual.");
+            return;
+        }
+
         const { error } = await supabase
             .from("panel_posts")
-            .insert({ title, content });
+            .insert({
+                title,
+                content,
+                author_id: currentUser.id   // ←🔥 FIX ACÁ
+            });
 
         if (error) {
             alert("Error al publicar: " + error.message);
