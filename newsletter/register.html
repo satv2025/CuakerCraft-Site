@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse - CuakerCraft Newsletter</title>
     <link rel="stylesheet" href="assets/css/s1gnl0g.css">
-    <link rel="icon" type="image/png" href="https://media.cuakercraft.com.ar/assets/media/images/cuakerlogo2024.png">
+    <link rel="icon" type="image/png" href="../assets/media/images/cuakerlogo2024.png">
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="/">Inicio</a>
-        <a href="/login">Iniciar Sesión</a>
+        <a href="index.html">Inicio</a>
+        <a href="login.html">Iniciar Sesión</a>
     </nav>
 
     <section class="form-section">
@@ -21,7 +21,7 @@
             <label for="fullName">Nombre completo</label>
             <input type="text" id="fullName" required>
 
-            <label for="username">Nombre de usuario (el mismo que usás en Minecraft)</label>
+            <label for="username">Nombre de usuario</label>
             <input type="text" id="username" required>
 
             <label for="email">Correo electrónico</label>
@@ -34,7 +34,10 @@
         </form>
     </section>
 
-    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module">
+        import { registerFormHandler } from "./assets/js/auth.js";
+        registerFormHandler("register-form");
+    </script>
 </body>
 
 </html>
