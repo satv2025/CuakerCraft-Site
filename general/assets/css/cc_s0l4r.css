@@ -9,7 +9,7 @@
 /* Body y global */
 body {
     margin: 0;
-    background: #000;
+    background: #000000;
     /* Dark mode */
     color: #fff;
 }
@@ -140,6 +140,8 @@ footer {
     padding: 1rem;
     font-size: 0.9rem;
     color: #ccc;
+    position: relative;
+    bottom: -1.55em;
 }
 
 /* Cartel Newsletter */
