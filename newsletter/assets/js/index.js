@@ -60,7 +60,7 @@ async function loadPosts() {
         div.innerHTML = `
             <h3>${post.title}</h3>
             <p>${preview}</p>
-            <a href="/newsletter/articulo?id=${post.short_id}" class="btn" style="margin-top:10px;">
+            <a href="/articulo?id=${post.short_id}" class="btn" style="margin-top:10px;">
                 Ver más
             </a>
             <br>
