@@ -1,10 +1,20 @@
 @import url('https://fuentes.solargentinotv.com.ar/importgilroy.css');
 
 * {
+    anchor-name: none;
     font-family: 'Gilroy';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+::selection {
+    color: #222;
+    background: #00ff88;
+}
+
+li {
+    list-style: disc;
 }
 
 body {
@@ -18,7 +28,7 @@ body {
 .article-container {
     max-width: 900px;
     margin: 4rem auto;
-    padding: 2rem;
+    padding: 2rem 4rem 2rem 4rem;
     background: #111;
     border: 1px solid #333;
     border-radius: 12px;

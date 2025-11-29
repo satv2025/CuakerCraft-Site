@@ -7,6 +7,11 @@
     font-family: 'Gilroy';
 }
 
+::selection {
+    color: #222;
+    background: #00ff88;
+}
+
 body {
     margin: 0;
     background: #000;

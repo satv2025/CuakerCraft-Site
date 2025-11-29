@@ -6,6 +6,11 @@
     font-family: 'Gilroy';
 }
 
+::selection {
+    color: #222;
+    background: #00ff88;
+}
+
 /* Body y global */
 body {
     margin: 0;
