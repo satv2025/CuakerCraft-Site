@@ -133,12 +133,24 @@ h3 {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid #A0A0A0;
+    background: rgb(0 0 0);
+    outline: 2px solid #fff;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 0.3em;
     color: #fff;
+    cursor: pointer;
 }
+
+.card:hover strong {
+    color: #000;
+}
+
+.card:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+.card:hover {}
 
 .card strong {
     color: #00ff88;
